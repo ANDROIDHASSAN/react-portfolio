@@ -1,0 +1,136 @@
+Today i have done with my home page .
+
+today i have learned about animate.css
+ we can use this for adding animation in our website 
+ 
+ todays work :
+ 
+ index.js:
+ 
+ import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import LogoTitle from '../../assets/images/logo-s.png';
+import AnimatedLetters from '../AnimatedLetters';
+import './index.scss';
+
+const Home = () => {
+  const [letterClass, setLetterClass] = useState('text-animate')
+  const nameArray = ['s', 'a', 'n']
+  const jobArray = ['w', 'e', 'b', ' ', 'd', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r', '.']
+
+  return (
+    <div className="container home-page">
+      <div className="text-zone">
+        <h1>
+         <span className={letterClass}>H</span>
+         <span className={`${letterClass} _12`}>i,</span>
+         <span className={`${letterClass} _13`}>I</span>
+         <span className={`${letterClass} _14`}>'m</span>
+           <br />
+           <span className={`${letterClass} _15`}>H</span>
+           <span className={`${letterClass} _16`}>a</span>
+          <img src={LogoTitle} alt="developer" />
+          <AnimatedLetters letterClass={letterClass}
+          strArray={nameArray}
+          idx={15} />
+          <br />
+          <AnimatedLetters letterClass={letterClass}
+          strArray={jobArray}
+          idx={22} />
+        </h1>
+        <h2>Frontend Developer / Javascript Expert / Youtuber</h2>
+        <Link to="/contact" className="flat-button">
+          Contact Me
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+export default Home
+
+index.scss:
+
+.home-page{
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    .text-zone {
+        position: absoulte;
+        left: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40%;
+        max-height: 90%;
+        
+    }
+    h1 {
+        color: #fff;
+        font-size: 53px;
+        margin: 0;
+        font-family: 'Coolvetica';
+        font-weight: 400;
+
+        &::before {
+            content: '<h1>';
+            font-family: 'La Belle Aurore';
+            color: #ffd700;
+            font-size: 18px;
+            position: absolute;
+            margin-top: -40px;
+            left: 15px;
+            opacity: 0.6;
+        }
+        &::after{
+            content: '<h1/>';
+            font-family: 'La Belle Aurore';
+            color: #ffd700;
+            font-size: 18px;
+            position: absolute;
+            margin-top: 18px;
+            margin-left: 20px;
+            animation: fadeIn 1s 1.7s backwards;
+            opacity: 0.6;
+        }
+        img{
+            width:32px;
+            margin-left: 20px;
+            opacity: 0;
+            height: auto;
+            animation: rotateIn 1s linear both;
+            animation-delay: 1.4s;
+        }
+    }
+
+    h2{
+        color: #8d8d8d;
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 11px;
+        font-family: sans-serif;
+        letter-spacing: 3px;
+        animation:fadeIn 1s 1.8s backwards;
+
+    }
+    .flat-button{
+        color: #ffd700;
+        font-size: 13px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        font-family: sans-serif;
+        text-decoration: none;
+        padding: 10px 18px;
+        border: 1px solid #ffd700;
+        margin-top: 25px;
+        float: left;
+        animation: fadeIn 1s 1.8s backwards;
+        white-space: nowrap;
+
+        &:hover{
+            background: #ffd700;
+            color: #333;
+        }
+    }
+}
+
+
